@@ -4,6 +4,9 @@
 # include <pthread.h>
 # include <cstdlib>
 # include <vector>
+# include <string>
+
+
 
 template <typename T>
 struct thread_data{
@@ -12,11 +15,22 @@ struct thread_data{
     int NumThreads;
 };
 
+bool isNumber(const std::string& str);
+
 template <typename T>
 void MyMerge(T *ptr, int length);
 
 template <typename T>
 void MySort(T *ptr, int length, int NumThreads);
+
+
+bool isNumber(const std::string& str)
+{
+    for (char const &c : str) {
+        if (std::isdigit(c) == 0) return false;
+    }
+    return true;
+}
 
 template <typename T>
 void *merge_sort(void *varargin){
