@@ -36,5 +36,17 @@ int main(){
     duration<double, std::milli> time_span = t2 - t1;
 
     std:: cout << "Time consumed: " << time_span.count() << "mS \n" << std::endl;
+    int index = 0;
+    std::ofstream myfile("output.txt");
+     if(myfile.is_open())
+    {
+        do{            
+            myfile<<array[index]<< std::endl;
+            index++;
+        }while(index < SizeOfArray);
+        myfile.close();
+    }
+    else std::cerr<<"Unable to open file";
+    std:: cout << "Sorted numbers were listed in output.txt" << std::endl;
     return 0;
 }
